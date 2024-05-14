@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
   const isActiveStyle = ({ isActive }) => ({
     fontWeight: isActive ? "bold" : "",
-    color: isActive ? "#E53935" : ""
+    color: isActive ? "#E53935" : "",
   });
 
   return (
@@ -14,7 +14,7 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/expense" style={isActiveStyle} className="nav-item">
+        <NavLink to="/expenses" style={isActiveStyle} className="nav-item">
           Expense
         </NavLink>
       </li>

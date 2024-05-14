@@ -5,7 +5,7 @@ import {
   sortDataByAmount,
   filterDataByCategory,
   applyFilters,
-  addEntry
+  addEntry,
 } from "../actions/action";
 import { IncomeCard, IncomeExpenseForm } from "../components";
 import { CATEGORY } from "../utils/constant";
@@ -16,28 +16,28 @@ const selectLoading = (state) => state.loading;
 const selectError = (state) => state.error;
 
 export const getIncomeFilters = createSelector(
-    selectIncomeFilters,
-    (incomeFilters) => incomeFilters
-  );
-  export const getFilteredIncome = createSelector(
-    selectFilteredIncome,
-    (filteredIncome) => filteredIncome
-  );
-  export const getLoading = createSelector(selectLoading, (loading) => loading);
-  export const getError = createSelector(selectError, (error) => error);
-const Income = ()=>{
-const dispatch= useDispatch()
-const incomeFilters= useSelector(getIncomeFilters)
-const filteredIncome= useSelector(getFilteredIncome)
-const loading= useSelector(getLoading)
-const fetchError= useSelector(getError)
-useEffect(()=>{
-    dispatch(getIncome())
-},[dispatch])
-useEffect(()=>{
-    dispatch(applyFilters("INCOME"))
-},[incomeFilters])
-const handleSortByAmount = (isChecked) => {
+  selectIncomeFilters,
+  (incomeFilters) => incomeFilters,
+);
+export const getFilteredIncome = createSelector(
+  selectFilteredIncome,
+  (filteredIncome) => filteredIncome,
+);
+export const getLoading = createSelector(selectLoading, (loading) => loading);
+export const getError = createSelector(selectError, (error) => error);
+const Income = () => {
+  const dispatch = useDispatch();
+  const incomeFilters = useSelector(getIncomeFilters);
+  const filteredIncome = useSelector(getFilteredIncome);
+  const loading = useSelector(getLoading);
+  const fetchError = useSelector(getError);
+  useEffect(() => {
+    dispatch(getIncome());
+  }, [dispatch]);
+  useEffect(() => {
+    dispatch(applyFilters("INCOME"));
+  }, [incomeFilters]);
+  const handleSortByAmount = (isChecked) => {
     dispatch(sortDataByAmount("INCOME", isChecked));
   };
 
@@ -49,17 +49,18 @@ const handleSortByAmount = (isChecked) => {
     dispatch(addEntry("income", incomeData));
   };
 
-
-return(<div>
-    <h2>
-        Income
-    </h2>
-    {loading ? (<h3>loading...</h3>):(
-    <><div>
-      <h3>Add New Income</h3>
-<IncomeExpenseForm onSubmit={handleAddIncome}/>
-      </div>
-      <div className="filter_body">
+  return (
+    <div>
+      <h2>Income</h2>
+      {loading ? (
+        <h3>loading...</h3>
+      ) : (
+        <>
+          <div>
+            <h3>Add New Income</h3>
+            <IncomeExpenseForm onSubmit={handleAddIncome} />
+          </div>
+          <div className="filter_body">
             <h3>Filters:</h3>
             <div className="filter_container">
               <div>
@@ -83,10 +84,20 @@ return(<div>
                   ))}
                 </select>
               </div>
+            </div>
           </div>
-    </div>
-    {fetchError ? (
-            <h3>Error: {fetchError}</h3>
+          {fetchError ? (
+            <p className="message">
+              {" "}
+              Repl isn't wakeup yet
+              <a
+                href="https://replit.com/@RushikeshShirsa/FinancialManagementBackEnd#index.js"
+                target="_blank"
+              >
+                {" "}
+                Click here to navigate
+              </a>
+            </p>
           ) : filteredIncome.length ? (
             <table className="item-table">
               <tbody>
@@ -104,10 +115,9 @@ return(<div>
           ) : (
             <h3>No income to display!</h3>
           )}
-              
-      </>
-    )}
-</div>)
-    
-}
-export {Income}
+        </>
+      )}
+    </div>
+  );
+};
+export { Income };

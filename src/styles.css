@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
 :root {
-  --primary-color: #e69A8DFF;
+  --primary-color: #e69a8dff;
   --background-color: #f8faec;
-  --text-color:#5F4B8BFF;
+  --text-color: #5f4b8bff;
 }
 
 *,
@@ -147,7 +147,6 @@ h3 {
   transition: 0.2s all ease-in-out;
 }
 
-
 .item-table th,
 .item-table td {
   padding: 12px;
@@ -186,7 +185,7 @@ h3 {
 .filter_container > div label {
   font-weight: 500;
   font-size: 16px;
-  color:  var(--text-color);
+  color: var(--text-color);
 }
 
 .filter_container > div input,
@@ -233,4 +232,13 @@ footer > p {
   padding: 12px;
   text-align: center;
   border: 1px dashed var(--text-color);
+}
+.page {
+  margin-top: 10%;
+}
+.message {
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 0;
+  padding: 20px;
 }
